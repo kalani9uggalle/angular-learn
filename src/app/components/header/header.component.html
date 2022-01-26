@@ -1,6 +1,20 @@
 <header>
-    <h1>{{title}}</h1>
-    <app-button color = "blue" button_text ="Add" (Check_click)="header_alert()" ></app-button>
+    
+    <h1>
+        <a routerLink="About" style="text-decoration: none; color: black;" title="about">
+            {{title}}
+        </a>
+    </h1>
+    <app-button *ngIf="hasRoute('/')" 
+    color = "{{showTaskValue ? 'blue':'green'}}" 
+    button_text ="{{showTaskValue ? 'Close':'tasks!'}}" 
+    (Check_click)="ToggleShowTask()" >
+</app-button>
+    <app-button *ngIf="hasRoute('/')"
+    color = "{{addTaskValue ? 'red':'blue'}}" 
+    button_text ="{{ addTaskValue ? 'Close':'Add'}}" 
+    (Check_click)="ToggleAddTAsk()" >
+</app-button>
 </header>
     
 
